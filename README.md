@@ -41,8 +41,7 @@
 
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
-
-
+The classifer classifies posts in the [K-pop Help Subreddit](https://www.reddit.com/r/kpophelp/), a forum for fans to ask questions about the k-pop music genre.
 
 ---
 
@@ -54,35 +53,43 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `recommendation`
 
 **Definition:**
+A question soliciting help for finding similar types of artists, subgenres, fashion, or songs. The request can be related to the music, performance, themes, or specific wardrobe styling.
 
 **Example 1:**
->
+> Songs like Indigo Promise and Teddy Bear by Kim Sejeong? I absolutely love these 2 songs but Sejeong rarely does these types. Songs that sound soft and sultry in the ears, with breathy vocals, kinda indie.
 
 **Example 2:**
->
+> Need birthday song recommendations. Its my birthday soon and i wanted a song to post myself to. Im looking for more mellow songs, so not too upbeat and super happy.
 
-### `label_two`
+### `advice`
 
 **Definition:**
+Question or request for personal help. The fan is seeking personalized help for their situation as a fan, usually related to fan culture, ticketing, merchandising, and purchasing albums.
 
 **Example 1:**
->
+> Where to get Aespa tickets for free or really cheap. I really want to go to Aespas’ concert in London but I’m have no money like I have no allowance and my mum said she isn’t paying for a concert but I really want to go😭😭 I’m actually panicking at the thought that I won’t see them. I’d appreciate any seats. Thank you😭😭🥺
 
 **Example 2:**
->
+> Where to sell or Donate kpop albums? Hi yall! Where can I donate or sell my albums? I have a couple and most don’t have photocards. I think throwing them would be a waste and would want someone or people to have these albums instead.
 
 ### The hardest boundary
+Questions asking for help on the poster's personal project or fan-fiction is considered advice. They are not asking for similar reccomendations for songs or artists that already exist. Instead, they're asking for help cultivating their own personal fan experience.
 
 **Which two labels:**
+> Could some K-pop fans help me test the difficulty of a song guessing game? I’ve been making a small K-pop song guessing game because I really like those “guess the song in 1 second” challenges and I was not able to find one for Kpop, but I’ve reached the point where I’ve heard the songs so many times that I genuinely can’t tell what is easy or difficult anymore 😭 Would anyone here be willing to try a few rounds and help me figure out: Are the songs too obvious or too difficult? Do the song choices feel representative of K-pop?
+
+
+> Blackpink, Twice, Red Velvet, and Gfriend members as TripleS. I want to make a “how would Blackpink, twice, red velvet, and gfriend sing triples” video because these big 4 3rd gen groups add up to 24, but I don’t know what member to assign to sing
+
+
 
 **The decision rule I used every time:**
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
-
-
+If the post is asking for reccommendations relative to their own personal project use case, then it is seeking advice. If the request for help is related to fan-fiction or fandom imagination, then it is asking for advice -- not a recommendation for real songs they could actually listen to.
 
 ---
 
