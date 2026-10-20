@@ -51,7 +51,7 @@ whether you hit them:
 
 ---
 
-## 1. Accuracy is at least 0.60.
+## 1. Overall accuracy is at least 0.60.
 
 <!-- Your criterion. It must name a number. -->
 
@@ -69,26 +69,24 @@ No label above 70% of your data. If one label dominates, the model learns to gue
 
 ---
 
-## 3. There are at least 150 rows in the total data set.
+## 3. The accuracy for recommendation is greater than 0.545.
 
-<!-- Your criterion. -->
 **Why this target:**
-We need a sufficient amount of overall data to train a text classifier. Any less amount of data may not be enough examples for the model to identify common patterns among each class. 
-
+Since there are 11 examples in the evaluation set for recommendation, the model needs to have 6 out of 11 correct predictions to be better than a coin flip. 6 divided by 11 is 0.545.
 
 ---
 
-## 4. The AUC (Area Under Curve) is greater than 0.5.  
+## 4. The accuracy for advice is greater than 0.583.
 
 **Why this target:**
-The Area Under the ROC Curve (AUC-ROC) is a metric to evaluate the performance of a binary classification model. The AUC value represents the probability that the model will rank a randomly chosen positive example higher than a randomly chosen negative example. AUC ranges from 0 to 1 with higher values showing better model performance. An AUC of 0.5 means the model performs no better than random guessing. We want reassurance our model to be better than a random guess.  
+Since there are 12 examples in the evaluation set for recommendation, the model needs to have 7 out of 12 correct predictions to be better than a coin flip. 7 divided by 12 equals 0.583.
 
 ---
 
 ## 5. Every label has an F1 of at least 0.60 on the held-out set.
 
 **Why this target:**
-If the data set is imbalanced, then the accuracy metric may be misleading. The F1 score effectively captures the trade-off between precision and recall, offering a comprehensive evaluation of model performance. 
+If the data set is imbalanced, then the accuracy metric may be misleading. The F1 score effectively captures the trade-off between precision and recall, offering a comprehensive evaluation of model performance.
 
 
 ---

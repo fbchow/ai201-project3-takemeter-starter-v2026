@@ -126,15 +126,30 @@ Advice because it's more related to someone's personal opinion.
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
 **Base model:**
+distilbert-base-uncased
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 
+
+- EPOCHS = 3
+- LEARNING_RATE = 2e-5
+- BATCH_SIZE = 16
+- seed = 42
 
 **Anything I changed from the defaults, and why:**
+I didn't change anything from the defaults.
 
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
 
+```markdown
+train 106  ·  val 23  ·  test 23
+
+                train  val  test
+label                           
+advice             53   11    12
+recommendation     53   12    11
+```
 
 
 ---
