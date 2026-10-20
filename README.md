@@ -175,8 +175,11 @@ recommendation     53   12    11
 **Moment 2**
 
 - *What I asked for:*
+  - I asked for help labelling the hardest boundary posts mentioned above.
 - *What came back:*
+  - Unhelpful suggestion to add another category.
 - *What I changed:*
+  - Nothing, ignored the suggestion because I need to stay in scope for the current project. 
 
 **Pre-labelling disclosure:**
 
