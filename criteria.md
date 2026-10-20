@@ -51,43 +51,38 @@ whether you hit them:
 
 ---
 
-## 1. Overall accuracy is at least 0.60.
-
-<!-- Your criterion. It must name a number. -->
+## 1. Overall accuracy is at least 0.70.
 
 **Why this target:**
-Since there are 2 labels, a random coin flip at best would return 50% accuracy due to chance. If the model is worth using, it has to be at least marginally better than randomly flipping a coin.
+My test set is about 23 posts, so 0.70 means at least 17 correct. A coin flip gets about 11-12, and I only have two labels, so I want a clear gap above that. Anything lower would be hard to tell apart from luck on 23 posts.
 
 ---
 
-## 2. Label imbalance can only be up to 0.7.
+## 2. No label makes up more than 60% of the data.
 
 **Why this target:**
-No label above 70% of your data. If one label dominates, the model learns to guess it and nothing else. Since there are only 2 classes, the model could be sensitive to class imbalance. 
-
-
+I have 152 posts split 76/76. r/kpophelp gets more recommendation requests than advice questions, so more scraping will likely skew it. At 60/40, always guessing the top label scores 0.60, still under criterion 1's 0.70. At a 70/30 skew it would score 0.70 and pass without learning anything.
 
 ---
 
 ## 3. Both labels have recall of at least 0.65 on the held-out set, on every seed.
 
 **Why this target:**
-The test split is about 23 posts (11 recommendation, 12 advice), so one post moves recall by roughly 9 points. 0.65 means at least 8 of 11 and 8 of 12 correct, which is clearly above the coin-flip lines of 6/11 and 7/12 but still survives a one-post swing between seeds. Recall per label (not overall accuracy) catches the failure where the model dumps everything into one label. My classes are perfectly balanced (76/76), so there is no majority class to hide behind, and the advice/recommendation boundary is fuzzy (e.g. "Need birthday song recommendations... I'm looking for mellow songs" asks for a recommendation but reads like advice-seeking).
+The test set has 11 recommendation and 12 advice posts, so 0.65 means at least 8 of 11 and 8 of 12 correct. That beats the coin-flip lines (6/11, 7/12) but allows a miss or two. Checking recall per label catches a model that dumps everything into one label, which overall accuracy can hide. The advice/recommendation line is also fuzzy: "Need birthday song recommendations... I'm looking for mellow songs" reads like both.
 
 ---
 
 ## 4. For each label, precision and recall differ by no more than 0.15.
 
 **Why this target:**
-With balanced data, a healthy model should not systematically over-predict one label. A big precision/recall gap on one label means the other label is being absorbed into it (e.g. high recall but low precision on recommendation means advice posts are being called recommendations). 0.15 is about 2 posts out of the 11-12 per label: tight enough to expose lopsided behavior, loose enough that a single-post swing does not fail it.
+My data is balanced, so the model shouldn't favor one label. A big gap means one label is swallowing the other, for example high recall but low precision on recommendation means advice posts are being called recommendations. 0.15 is about 2 posts out of 11-12, so one stray post won't fail it.
 
 ---
 
 ## 5. Every label has an F1 of at least 0.60 on the held-out set.
 
 **Why this target:**
-If the data set is imbalanced, then the accuracy metric may be misleading. The F1 score effectively captures the trade-off between precision and recall, offering a comprehensive evaluation of model performance.
-
+Each label has only 11-12 test posts, so F1 will jump between seeds and I set the bar lower than overall accuracy. 0.60 is a floor for each label separately: criteria 3 and 4 can pass while precision is poor, and F1 catches that.
 
 ---
 
