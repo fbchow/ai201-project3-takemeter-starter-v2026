@@ -1,42 +1,5 @@
 # TakeMeter
 
-> ### 👋 Start here
->
-> **New to this repo? Read [RUNNING.md](RUNNING.md) first** — setup, the
-> notebook, the baseline, and what to do when something breaks.
->
-> Once `python test.py` passes:
->
-> ```bash
-> head -5 data/practice_labels.csv     # the shape your labels.csv needs
-> ```
->
-> Then open `takemeter.ipynb` **in this folder** — in VS Code, or with
-> `jupyter notebook` if you prefer. Pick the kernel: the `.venv` inside this
-> project. Run section 1, which reports the hardware you'll be training on.
-> Everything else waits until you have data.
->
-> Nothing to upload, nothing to connect, no accounts and no keys. The notebook
-> runs on your machine and writes next to your code.
->
-> **The rest of this file is your submission.** Fill it in as you go.
-
----
-
-<!-- ─────────────────────────────────────────────────────────────────────────
-     HOW TO USE THIS FILE
-
-     Unit 5 asks for the first five sections. Unit 6 adds the five below them.
-
-     Everything is pasted as TEXT. No screenshots, no images.
-
-     ⚠️ The confusion matrix especially. The notebook prints one as a markdown
-     table, ready to copy. A screenshot of a matrix earns nothing. Paste the
-     table.
-     ───────────────────────────────────────────────────────────────────────── -->
-
-<!-- ═══════════════════════ UNIT 5 — THE BUILD ═══════════════════════ -->
-
 ## What This Does
 
 <!-- Your community, and what your classifier sorts posts into. Three or four
@@ -99,18 +62,19 @@ If the post is asking for reccommendations relative to their own personal projec
      cases. -->
 
 **Where the posts came from:**
+K-pop Help Subreddit. (https://www.reddit.com/r/kpophelp/)
 
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
+Cold labelled
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| recommendation  | 76 | 50% |
+| advice | 76 | 50% |
+| **Total** | 152 | 100% |
 
 **Three hard cases**
 
@@ -118,25 +82,42 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
+*The post:*
+>help me make a kpop playlist for my heartbroken friend !!
+Hi guys !! My friend recently got her heartbroken by a guy and she’s been saying that she can’t listen to most of the songs she used to listen to because she relates to much to the lyrics now.
+I suggested that she listen to kpop songs cause she wouldn’t understand the lyrics but she’ll still be able to listen to music.
+So I’m making a playlist for her with two parts :
+hype songs (something like Attention by New Jeans , not something too hype i guess)
+krnb (she likes these type of songs)
+So if you guys have any song recommendations from any group or solo artists, please lemme know. Oh btw, she’s not a kpop stan so she has untrained ears haha just in case someone pulls out something diabolical
+
+*Could have been:*
+advice because they are asking for personal help for their friend
+
+*I chose, because:*
+I chose recommendation because the ask is still not about the poster's personal fan experience. The result is still songs with a similar taste profile.
 
 **2.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
+*The post:*
+> Finding Unreleased tracks
+Where do i find unreleased kpop tracks? The most I've found are some seventeen songs on soundcloud (I'm more of a gg stan), or fan made recreated tracks for illit and loona on youtube or soundcloud. I want full official leaks but I can't find anything!
+
+*Could have been:*
+recommendation because their request is seeking songs related to an artist.
+
+*I chose, because:*
+advice because it is technically related to the logistics of finding content as a fan -- not a recommendation for personalized songs with a similar taste.
 
 **3.**
-> *The post:*
->
-> *Could have been:*
->
-> *I chose, because:*
+*The post:*
+>Would you consider Likey by TWICE a summer type song or no?
+I want to create a playlist with every twice summer song and I’m getting a little stuck with wondering if certain songs are a summer song or not. Likey is one of them, to me it sounds like a summer song but what do u think?
+
+*Could have been:*
+Recommendation because the poster needs help on assessing the musical genre or mood.
+
+*I chose, because:*
+Advice because it's more related to someone's personal opinion.
 
 ---
 
@@ -170,9 +151,12 @@ of next unit's variance. -->
 **Moment 1**
 
 - *What I asked for:*
+  - Help writing a Python script to scrape 5 posts from the subreddit.
 - *What came back:*
+  - A suggested script using the .json endpoint.
 - *What I changed:*
-
+  - I did not end up using the draft scraping script because it is blocked by Reddit with a 403 error and this type of unathenticated access is blocked. 
+ 
 **Moment 2**
 
 - *What I asked for:*
