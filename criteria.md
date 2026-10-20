@@ -69,17 +69,17 @@ No label above 70% of your data. If one label dominates, the model learns to gue
 
 ---
 
-## 3. The accuracy for recommendation is greater than 0.545.
+## 3. Both labels have recall of at least 0.65 on the held-out set, on every seed.
 
 **Why this target:**
-Since there are 11 examples in the evaluation set for recommendation, the model needs to have 6 out of 11 correct predictions to be better than a coin flip. 6 divided by 11 is 0.545.
+The test split is about 23 posts (11 recommendation, 12 advice), so one post moves recall by roughly 9 points. 0.65 means at least 8 of 11 and 8 of 12 correct, which is clearly above the coin-flip lines of 6/11 and 7/12 but still survives a one-post swing between seeds. Recall per label (not overall accuracy) catches the failure where the model dumps everything into one label. My classes are perfectly balanced (76/76), so there is no majority class to hide behind, and the advice/recommendation boundary is fuzzy (e.g. "Need birthday song recommendations... I'm looking for mellow songs" asks for a recommendation but reads like advice-seeking).
 
 ---
 
-## 4. The accuracy for advice is greater than 0.583.
+## 4. For each label, precision and recall differ by no more than 0.15.
 
 **Why this target:**
-Since there are 12 examples in the evaluation set for recommendation, the model needs to have 7 out of 12 correct predictions to be better than a coin flip. 7 divided by 12 equals 0.583.
+With balanced data, a healthy model should not systematically over-predict one label. A big precision/recall gap on one label means the other label is being absorbed into it (e.g. high recall but low precision on recommendation means advice posts are being called recommendations). 0.15 is about 2 posts out of the 11-12 per label: tight enough to expose lopsided behavior, loose enough that a single-post swing does not fail it.
 
 ---
 

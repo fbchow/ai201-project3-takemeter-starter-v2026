@@ -68,6 +68,8 @@ K-pop Help Subreddit. (https://www.reddit.com/r/kpophelp/)
 Say so plainly — the disclosure is required, not penalised. -->
 Cold labelled
 
+I'm stopping at 152 rows because that is all the data I can collect by hand given the deadline. I do not have accesss to the Reddit Developer API, which would make downloading and querying the data faster in the future.
+
 **Counts per label:**
 
 | Label | Count | Share |
@@ -182,6 +184,7 @@ recommendation     53   12    11
   - Nothing, ignored the suggestion because I need to stay in scope for the current project. 
 
 **Pre-labelling disclosure:**
+The K-pop subreddit has flairs or tags, such as "recommendation", "explain", and "advice". I used the flair as a rough proxy for posts that fit the label but verified that the definition stated for this project still applies.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 

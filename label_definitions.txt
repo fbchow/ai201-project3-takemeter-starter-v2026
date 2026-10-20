@@ -5,6 +5,5 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+recommendation: A question soliciting help for finding similar types of artists, subgenres, fashion, or songs. The request can be related to the music, performance, themes, or specific wardrobe styling.
+advice: Question or request for personal help. The fan is seeking personalized help for their situation as a fan, usually related to fan culture, ticketing, merchandising, and purchasing albums.
