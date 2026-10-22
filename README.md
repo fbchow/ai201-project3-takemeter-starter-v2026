@@ -200,19 +200,20 @@ The K-pop subreddit has flairs or tags, such as "recommendation", "explain", and
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.696 | 0.783 | +0.087 |
+| Macro F1 | 0.673 | 0.776 | +0.102 |
+| F1 — `advice` | 0.588 | 0.737 | +0.149 |
+| F1 — `recommendation` | 0.759 | 0.815 | +0.056 |
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+I think the trained model will beat the baseline because in general BERT is better at deep understanding of context and named entity recognition problems. That's closer to our objective here, which is classifying labels from text on the specific topic of K-pop fans. Meanwhile, the baseline BART is better at tasks that create output, like translation and summarizing.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
-
+It's possible the gap could stem from my poorly written definition of the class labels in `label_definitions.txt`.
 
 
 ---

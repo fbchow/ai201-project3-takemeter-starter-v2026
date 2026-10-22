@@ -1,0 +1,143 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 23,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 23,
+    "accuracy": 0.6956521739130435,
+    "f1_macro": 0.6734279918864098,
+    "per_label": {
+      "advice": {
+        "precision": 1.0,
+        "recall": 0.4166666666666667,
+        "f1": 0.5882352941176471,
+        "support": 12
+      },
+      "recommendation": {
+        "precision": 0.6111111111111112,
+        "recall": 1.0,
+        "f1": 0.7586206896551725,
+        "support": 11
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Where to sell or Donate kpop albums? \nHi yall! Where can I donate or sell my albums? I have a couple and most don\u2019t have photocards. I think throwing them would be a waste and would want someone or people to have these albums instead.",
+      "gold": "advice",
+      "predicted": "advice"
+    },
+    {
+      "text": "songs like racecar by izna?\ni have a love/hate relationship with this song and i wanna know if there's more songs that has the same sound and beat like this. it's one of my favorite k-pop songs of all time and dare i say the best.",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Need recommendations or similar concepts.\nSongs that have the same structure as Heize- I don't lie & Tabber- Hysterical Glamor. The beats for both change at the end and I find myself falling hard for these two songs. Any similar? Is this even the right place to post?",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "For Ticketmaster, can I have two separate accounts and device to put on queue?\nI know ticketmaster doesn't allow overbuying whatever limit is set during a concert, but I don't really plan to use the second account to buy more tickets. It's more like a way for me to try and get lower qn's. After I purchase from one account I will close the other.\n\nIs it safe to do this?",
+      "gold": "advice",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "BTS Kaosiung or Bangkok?\nHi, apologies for the stupid question, but sort of wanted to get maybe the locals army opinion. Considering that atm the concerts for BTS in bangkok and Kaohsiung are already sold out, which you do you think there might be a good chance to get a last minute ticket ? (ie resale via cancellation or production tickets) if someone could give me their own insight maybe i have never been to a conce in thailand or taiwan but i feel like they have a similar verification system as south korea.\n\nmany thanks for the help \ud83d\udc9c",
+      "gold": "advice",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "recs for songs like slidin' by kai\nso far i think algorithm by jey, baby by dj roots nd jey, wet by jooyoung have a similar vibe.. but none of these quite match.",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "advice txt ticketing seoul\nHi!! I\u2019m trying to get tickets for txt in Seoul for their new tour. The ticketing is via interpark (NOL) global. I\u2019m currently in korea. If anyone has advice on how to secure tickets, since i know it\u2019s really hard, i\u2019d appreciate!!",
+      "gold": "advice",
+      "predicted": "advice"
+    },
+    {
+      "text": "Best way to support a nugu/unpopular group?\nExpecially whek buying merch/albums, does it matter where I buy them?",
+      "gold": "advice",
+      "predicted": "advice"
+    },
+    {
+      "text": "any websites to sell Babymonster concert tickets\ud83d\ude2d\nplsss helpp concert is in Singapore in 80 days, ive got the VIP standing pen tickets but my friend cant make it, where wld it be good to sell these tickets, ive asked my friends but none of them have any suggestions or want to go\ud83d\ude2d",
+      "gold": "advice",
+      "predicted": "advice"
+    },
+    {
+      "text": "help!! needing advise re: old kpop/trot\nR / kpop is literally the worst!!! anybody know where I can keep up to date with old kpop and trot artists having specials or concerts on yt?",
+      "gold": "advice",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "any similar songs to heart attack by aoa?\ndiscovered the song a few days ago and im genuinely obsessed, i would also really love to know any similar songs that specifically utilize the refrain+chorus structure if you guys know any",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Are there other official kpop/entertainment rythm games other than superstar high up & rhytm hive?\nI love rhytm games so much but is there for example an SM ent version? I'd love to play h2h's or aespas songs!",
+      "gold": "advice",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Weverse or Ktown4u for Season's Greetings?\nHi guys! I'm planning to pre-order season's greetings and just wondering if both are reliable and safe sellers? I haven't bought any official stuff before and it's gonna be an upwards of $150 for me so I just want to be sure \ud83d\ude05\n\nEdit: I'm a Kiwi so this is NZD (shipping is always a killer bc of how far I live \ud83e\udd72)",
+      "gold": "advice",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "has anyone experienced a concert in Macau? need some help regarding logistics\nhihii!\n\ni'm planning to get vip tickets for a concert in Macau but i understand that to enjoy the soundcheck benefit, there is ID verification to be done?\n\nbut since i'm getting a resale ticket, it might be a physical ticket instead. am i able to go for the soundcheck still or must i get a proxy form/id from the reseller in order to get in for soundcheck?\n\nnot too sure how macau/fantopia sites work., wld appreciate any help with this, thank you!! \ud83d\ude4f",
+      "gold": "advice",
+      "predicted": "advice"
+    },
+    {
+      "text": "Songs like Indigo Promise and Teddy Bear by Kim Sejeong? \nI absolutely love these 2 songs but Sejeong rarely does these types. Songs that sound soft and sultry in the ears, with breathy vocals, kinda indie.",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Kpop songs that feel like falling in love but sadly.\nLike, songs that feel like unrequited love, or simply just being lovesick, and a bit sad. What songs come to mind? Any group, bg or gg, or soloist, i dont care. Thank you <3",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Recommend me a 5th generation K-pop group with an unusual sound\n\nI'm tired of the same sound in the 5th generation",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Is there a way to download weverse videos?\nI have their premium membership but apparently the only option available is offline download which will expire after a month. Is there a way to download the premium videos to my device?",
+      "gold": "advice",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Groups that sounds like Block B\nRecently fell in love with Block B's sound. I know they're not *technically* disbanded, but I'd love some reccs tthat have a similar sound. Preferably something along the lines of NaliNa and Malili Mambo. Please and thank you!",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "songs with a soft romance vibe to it\ni am trying to make a fluff playlist and i currently have:\n\nThe chase, style, focus by hearts2hearts\n\nlove in my heart by babymonster\n\nadore u, crush on you, loud by nmixx\n\nhype boy, ditto, super shy, how sweet by newjeans\n\nthanks in advance!",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Similar groups to VVS\nAre there any groups like VVS? I really liked them but they unfortunately disbanded due to lack of money. I'm looking for any GIRL GROUPS who have similar concepts, very rap and hip-hop heavy, thanks!",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Could some K-pop fans help me test the difficulty of a song guessing game? \nI\u2019ve been making a small K-pop song guessing game because I really like those \u201cguess the song in 1 second\u201d challenges and I was not able to find one for Kpop, but I\u2019ve reached the point where I\u2019ve heard the songs so many times that I genuinely can\u2019t tell what is easy or difficult anymore \ud83d\ude2d Would anyone here be willing to try a few rounds and help me figure out: Are the songs too obvious or too difficult? Do the song choices feel representative of K-pop?",
+      "gold": "advice",
+      "predicted": "recommendation"
+    },
+    {
+      "text": "Any song recs which are similar to love in the ice by tvxq?\nI recently saw their 2009 tokyo dome ot5 performance of it and I am in love with the song.",
+      "gold": "recommendation",
+      "predicted": "recommendation"
+    }
+  ]
+}
