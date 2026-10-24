@@ -222,6 +222,12 @@ It's possible the gap could stem from my poorly written definition of the class 
 
 <!-- Five criteria across three seeds. The notebook's section 6 prints the
      spread table; the Target and Verdict columns are yours. -->
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.783 | 0.870 | 0.870 | 0.087 |
+| Macro F1 | 0.776 | 0.865 | 0.869 | 0.093 |
+| F1 — `advice` | 0.737 | 0.842 | 0.857 | 0.120 |
+| F1 — `recommendation` | 0.815 | 0.889 | 0.880 | 0.074 |
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
@@ -236,17 +242,20 @@ It's possible the gap could stem from my poorly written definition of the class 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| true \ predicted | advice | recommendation |
+|---|---|---|
+| **advice** | 7 | 5 |
+| **recommendation** | 0 | 11 |
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
+Biggest confusion: 5 real `advice` posts called `recommendation`.
 
+The other direction: 0 real `recommendation` posts called `advice`.
+
+That's lopsided — the model leans toward `recommendation` on this pair. A direction like that usually points at your labelling rather than the model.
 
 
 ---
