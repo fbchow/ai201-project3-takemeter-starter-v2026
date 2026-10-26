@@ -232,9 +232,9 @@ It's possible the gap could stem from my poorly written definition of the class 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
 | 1. Overall accuracy | >=0.70 | 0.783 | 0.870 | 0.870 | MET |
-| 2. Per label distribution | <=0.60 | no | no | no | MISSED |
-| 3. Recall on held-out set | >=0.65 | `advice`: 0.583, `recommendation`:1.0 | `advice`:0.727, `recommendation`:1.0 | `advice`: 0.75, `recommendation`:1.0 | MET  |
-| 4. Diff(precision - recall) per label| <=0.15 | `advice:`0.417, `recommendation`:0.313 | `advice:`0.272, `recommendation`:0.200 | `advice:`0.25, `recommendation`:214 | MISSED |
+| 2. Per label distribution | <=0.60 | no metric | no metric | no metric | MISSED |
+| 3. Recall on held-out set | >=0.65 | `advice`: 0.583, `recommendation`:1.0 | `advice`:0.727, `recommendation`:1.0 | `advice`: 0.75, `recommendation`:1.0 | MISSED  |
+| 4. Diff(precision - recall) per label| <=0.15 | `advice:`0.417, `recommendation`:0.313 | `advice:`0.272, `recommendation`:0.200 | `advice:`0.25, `recommendation`:0.214 | MISSED |
 | 5. F1 on held-out set | >=0.60| `advice`:0.737, `recommendation:`0.815 | `advice`:0.842, `recommendation`:0.889 | `advice`:0.857, `recommnedation`:0.88 | MET |
 
 ### Confusion matrix
@@ -268,8 +268,8 @@ That's lopsided — the model leans toward `recommendation` on this pair. A dire
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
 | 1 | Overall accuracy is at least 0.70. | 3/3 | MET | Check overall accuracy output |
-| 2 | No label makes up more than 60% of the data.  | 0/3 | MISSED  | Criterion could not be measured. Unable to evaluate because didn't save per label counts after each seed run.|
-| 3 | Both labels have recall of at least 0.65 on the held-out set, on every seed. | 3/3 | MET | `recall`is high enough in `results_three_seeds_before.json` |
+| 2 | No label makes up more than 60% of the data.  | 0/3 | MISSED  | Criterion could not be measured. Unable to evaluate because we do not have per label count metric after each seed run.|
+| 3 | Both labels have recall of at least 0.65 on the held-out set, on every seed. | 2/3 | MISSED | `recall`is not high enough in seed 42 run. |
 | 4 | For each label, precision and recall differ by no more than 0.15. | 0/3 | MISSED | Calculated metric in Appendix section of `takemeter.ipynb` and differences were all greater than 0.15. |
 | 5 | Every label has an F1 of at least 0.60 on the held-out set. | 3/3 | MET | Check labels `advice` and `recommendation` F1 scores.  |
 
@@ -289,9 +289,12 @@ I'm unable to meet second criteria because it can not be measured. I didn't save
 
 Instead, I changed criteria #2 to a metric that we have measured. Overall F1 macro is at least 0.75. Macro F1 computes an F1 score for each class one-versus-rest and averages them with equal weight. Since this is a binary classification problem without class imbalance, the F1 macro score can measure a global "pulse" of how well the model is balancing precision and recall overall.
 
+*Missed Criteria 3*
+The recall for advice was below the 0.65 criteria on seed 42 run. This may stem from my labeling, not the model — I applied the boundary two different ways in the training data.
 
 *Missed Criteria 4*
-Criteria 4 (For each label, precision and recall differ by no more than 0.15) was missed. The confusion matrix shows most misses going to `recommendation.` 5 real `advice` posts were labelled `recommendation` while 0 real `recommendation` posts predicted as `advice`.
+Criteria 4 (For each label, precision and recall differ by no more than 0.15) was missed. The confusion matrix shows most misses going to `recommendation.` 5 real `advice` posts were labelled `recommendation` while 0 real `recommendation` posts predicted as `advice`. I think the miss may be attributed to several reasons. First, there may be disagreement among labelling and inconsistency with how I applied the boundary rules to the training data. This could stem from the label definition not being clear enough.
+
 
 
 <!-- "reaction has an F1 of 0.41 across all three seeds. My matrix shows most misses going to hot_take. My agreement check found 4 of my 6 disagreements on exactly that pair. So this is my labeling, not the model — I applied the boundary two different ways in the training data." -->
@@ -314,38 +317,7 @@ Criteria 4 (For each label, precision and recall differ by no more than 0.15) wa
      winning some of these. -->
 
 **Disagreements**
-There were no disagreements. The labels were easier to evaluate compared to my k-pop project data because of the clearer label definitions.
-
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
-
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
-
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
-
-**1.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
-
-**2.**
-> *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
+There were no disagreements. The labels were easier to evaluate compared to my k-pop project data because the definition and boundary examples were very well written.
 
 **What the pattern in my disagreements tells me:**
 My lack of diasgreements tells me that I'm consistently following the rules while labelling. And the rules are clearly written.
@@ -355,24 +327,29 @@ My lack of diasgreements tells me that I'm consistently following the rules whil
 ## The Improvement
 
 **What I changed:**
+Add examples to the thinnest label. I added 20 posts to the `advice` label, which had the worst F1 score.
 
 **Which diagnosis pointed at it:**
 
-### Run Log — After
+While 5 real advice posts were called recommendation, 0 real recommendation posts called advice. That's lopsided — the model leans toward recommendation on this pair. A direction like that usually points at my labelling rather than the model.
 
+<!--152 labels overall is insufficient after the data is split. We get 12 `recommendation` posts and 11 `advice` in the validation set. The extra post could bias answers towards `reccomendation` also.-->
+
+
+### Run Log — After
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | >=0.70 | 0.885 | 0.769 | 0.769 | MET |
+| 2. F1 macro | >=0.75 | 0.876 | 0.729 | 0.768 | MISSED |
+| 3. Recall on held-out set | >=0.65 | `advice`: 1.0, `recommendation`:0.727 | `advice`:0.714, `recommendation`:0.455 | `advice`: 0.733, `recommendation`:0.818 | MISSED  |
+| 4. Diff(precision - recall) per label| <=0.15 | `advice:`0.167, `recommendation`:0.273 | `advice:`0.286, `recommendation`:0.545 | `advice:`0.113, `recommendation`:0.126 | MISSED |
+| 5. F1 on held-out set | >=0.60| `advice`:0.909, `recommendation:`0.842 | `advice`:0.833, `recommendation`:0.625 | `advice`:0.786, `recommnedation`:0.75 | MET |
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
-
+Adding additional advice labels did not help. I know this because 3 criterion failed in both the before and after runs.
 
 
 ---
@@ -380,12 +357,23 @@ My lack of diasgreements tells me that I'm consistently following the rules whil
 ## What's Still Broken
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
+For criterion 3, I would add additional `recommendation` labels to balance out the class imbalance I introduced in the "after" run. I stopped because I didn't have enough time.
 
+For criterion 4 and 5, I would also add more labels overall. I think the 200 mark would be more sufficient information to split across train, evaluate, and test. I stopped because I didn't have enough time for the project deadline.
 
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
+| true \ predicted | advice | recommendation |
+|---|---|---|
+| **advice** | 15 | 0 |
+| **recommendation** | 3 | 8 |
+
+Biggest confusion: 3 real `recommendation` posts called `advice`.
+The other direction: 0 real `advice` posts called `recommendation`.
+
+That's lopsided — the model leans toward `advice` on this pair. A direction like that usually points at my labelling rather than the model.
 
 ## Sources
 
