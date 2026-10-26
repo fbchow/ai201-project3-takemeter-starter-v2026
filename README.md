@@ -231,11 +231,11 @@ It's possible the gap could stem from my poorly written definition of the class 
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | >=0.70 | 0.783 | 0.870 | 0.870 | MET |
+| 2. Per label distribution | <=0.60 | no | no | no | MISSED |
+| 3. Recall on held-out set | >=0.65 | `advice`: 0.583, `recommendation`:1.0 | `advice`:0.727, `recommendation`:1.0 | `advice`: 0.75, `recommendation`:1.0 | MET  |
+| 4. Diff(precision - recall) per label| <=0.15 | `advice:`0.417, `recommendation`:0.313 | `advice:`0.272, `recommendation`:0.200 | `advice:`0.25, `recommendation`:214 | MISSED |
+| 5. F1 on held-out set | >=0.60| `advice`:0.737, `recommendation:`0.815 | `advice`:0.842, `recommendation`:0.889 | `advice`:0.857, `recommnedation`:0.88 | MET |
 
 ### Confusion matrix
 
@@ -267,11 +267,11 @@ That's lopsided — the model leans toward `recommendation` on this pair. A dire
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy is at least 0.70. | 3/3 | MET | Check overall accuracy output |
+| 2 | No label makes up more than 60% of the data.  | 0/3 | MISSED  | Criterion could not be measured. Unable to evaluate because didn't save per label counts after each seed run.|
+| 3 | Both labels have recall of at least 0.65 on the held-out set, on every seed. | 3/3 | MET | `recall`is high enough in `results_three_seeds_before.json` |
+| 4 | For each label, precision and recall differ by no more than 0.15. | 0/3 | MISSED | Calculated metric in Appendix section of `takemeter.ipynb` and differences were all greater than 0.15. |
+| 5 | Every label has an F1 of at least 0.60 on the held-out set. | 3/3 | MET | Check labels `advice` and `recommendation` F1 scores.  |
 
 **Diagnoses**
 
@@ -284,7 +284,17 @@ That's lopsided — the model leans toward `recommendation` on this pair. A dire
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
+*Missed Criteria 2*
+I'm unable to meet second criteria because it can not be measured. I didn't save per label counts after each seed run. The data on the distribution of each label in the corpus is already lost after each seed run. In retrospect, it's not a good criteria for evaluating the performance of the model.
 
+Instead, I changed criteria #2 to a metric that we have measured. Overall F1 macro is at least 0.75. Macro F1 computes an F1 score for each class one-versus-rest and averages them with equal weight. Since this is a binary classification problem without class imbalance, the F1 macro score can measure a global "pulse" of how well the model is balancing precision and recall overall.
+
+
+*Missed Criteria 4*
+Criteria 4 (For each label, precision and recall differ by no more than 0.15) was missed. The confusion matrix shows most misses going to `recommendation.` 5 real `advice` posts were labelled `recommendation` while 0 real `recommendation` posts predicted as `advice`.
+
+
+<!-- "reaction has an F1 of 0.41 across all three seeds. My matrix shows most misses going to hot_take. My agreement check found 4 of my 6 disagreements on exactly that pair. So this is my labeling, not the model — I applied the boundary two different ways in the training data." -->
 
 ---
 
@@ -296,7 +306,7 @@ That's lopsided — the model leans toward `recommendation` on this pair. A dire
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 30 / 30 = 100%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -304,6 +314,7 @@ That's lopsided — the model leans toward `recommendation` on this pair. A dire
      winning some of these. -->
 
 **Disagreements**
+There were no disagreements. The labels were easier to evaluate compared to my k-pop project data because of the clearer label definitions.
 
 <!-- Three lines each: the post, both labels, and who you think is right and
      why — grounded in the staff definitions you were both applying.
@@ -337,8 +348,7 @@ That's lopsided — the model leans toward `recommendation` on this pair. A dire
 > *Which pile:*
 
 **What the pattern in my disagreements tells me:**
-
-
+My lack of diasgreements tells me that I'm consistently following the rules while labelling. And the rules are clearly written.
 
 ---
 
@@ -377,6 +387,10 @@ That's lopsided — the model leans toward `recommendation` on this pair. A dire
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
+## Sources
+
+- https://rushdishams.blogspot.com/2011/08/micro-and-macro-average-of-precision.html
+- https://datascience.stackexchange.com/questions/15989/micro-average-vs-macro-average-performance-in-a-multiclass-classification-setting
 
 
 <!-- ═════════════════════════════════════════════════════════════════════
