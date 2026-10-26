@@ -63,6 +63,11 @@ My test set is about 23 posts, so 0.70 means at least 17 correct. A coin flip ge
 **Why this target:**
 I have 152 posts split 76/76. r/kpophelp gets more recommendation requests than advice questions, so more scraping will likely skew it. At 60/40, always guessing the top label scores 0.60, still under criterion 1's 0.70. At a 70/30 skew it would score 0.70 and pass without learning anything.
 
+## 2. New Revision: Overall F1 macro is at least 0.75
+
+**Why this target:**
+Overall F1 macro is at least 0.75. Macro F1 computes an F1 score for each class one-versus-rest and averages them with equal weight. Since this is a binary classification problem without class imbalance, the F1 macro score can measure a global "pulse" of how well the model is balancing precision and recall overall. In the k-pop data set, there are a balanced number of `advice` and `recommendation` posts, so I have higher performance expectations for the overall system.
+
 ---
 
 ## 3. Both labels have recall of at least 0.65 on the held-out set, on every seed.
